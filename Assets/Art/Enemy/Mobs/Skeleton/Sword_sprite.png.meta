@@ -251,28 +251,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sword_sprite_7
-      rect:
-        serializedVersion: 2
-        x: 530
-        y: 17
-        width: 10
-        height: 15
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f8cba67e460733144863eca09472c649
-      internalID: -1292327238
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Sword_sprite_8
       rect:
         serializedVersion: 2
@@ -290,28 +268,6 @@ TextureImporter:
       bones: []
       spriteID: 8abafa6d87c33904c864950b4c5c961c
       internalID: 1712858440
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sword_sprite_9
-      rect:
-        serializedVersion: 2
-        x: 546
-        y: 10
-        width: 7
-        height: 6
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c714e788808f9754bbc33986fedbf6b0
-      internalID: -1798417684
       vertices: []
       indices: 
       edges: []
