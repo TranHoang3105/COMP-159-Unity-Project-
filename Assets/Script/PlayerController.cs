@@ -4,11 +4,13 @@ public class PlayerController : MonoBehaviour
 {
     Rigidbody2D rb;
     Animator animator;
-    public float moveSpeed = 5f;
-    public float runSpeed = 8f;
+    public float moveSpeed = 4f;
+    public float runSpeed = 7f;
+
+    public float airWalkSpeed = 3f;
 
 
-    public float jumpImpulse = 10f;
+    public float jumpImpulse = 6f;
     [SerializeField] private bool _isMoving = false;
     [SerializeField] private bool _isRunning = false;
     Vector2 moveInput;
@@ -32,28 +34,32 @@ public class PlayerController : MonoBehaviour
             _isFacingRight = value;
         }
     }
-    public float currentSpeed
+    
+   public float currentSpeed
     {
         get
         {
-            if (IsMoving)
+            if (touchingDir.IsGrounded)
             {
-                if (IsRunning)
+                if (IsMoving)
                 {
-                    return runSpeed;
+                    return IsRunning ? runSpeed : moveSpeed;
                 }
                 else
                 {
-                    return moveSpeed;
+                    return 0; // idle on ground
                 }
             }
             else
             {
-                //Idle state
-                return 0;
+                // In the air, limited control
+                return airWalkSpeed;
             }
         }
     }
+
+    
+
 
 
     public bool IsMoving
