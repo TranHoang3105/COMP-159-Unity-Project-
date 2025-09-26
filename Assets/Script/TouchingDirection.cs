@@ -9,7 +9,7 @@ public class TouchingDirection : MonoBehaviour
     Animator animator;
     CapsuleCollider2D touchingCol;
     RaycastHit2D[] groundHit = new RaycastHit2D[5];
-    public ContactFilter2D castFilter;
+    [SerializeField]public ContactFilter2D castFilter;
     public float groundDistance = 0.5f;
     [SerializeField]private bool _isGrounded;
     public bool IsGrounded { get {
