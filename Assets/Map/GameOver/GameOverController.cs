@@ -1,9 +1,10 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameOverScreen : MonoBehaviour
+public class GameOverController : MonoBehaviour
 {
-    public void OnRestartClick()
+
+public void OnRestartClick()
 {
     SceneManager.LoadScene("1st Level");         
 }
@@ -14,3 +15,4 @@ public class GameOverScreen : MonoBehaviour
 }
 
 }
+
