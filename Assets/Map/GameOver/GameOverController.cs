@@ -11,7 +11,7 @@ public void OnRestartClick()
 
     public void OnMenuClick()
 {
-    SceneManager.LoadScene("Main Menu"); 
+    SceneManager.LoadScene("New"); 
 }
 
 }
