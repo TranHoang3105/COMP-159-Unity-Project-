@@ -2,12 +2,13 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 
+[RequireComponent(typeof(Rigidbody2D), typeof(TouchingDirection))]
 public class Skeleton : MonoBehaviour
 {
     public float walkSpeed = 3f;
 
     Rigidbody2D rb;
-    //TouchingDirections touchingDirections;
+    TouchingDirection touchingDirections;
 
     public enum WalkableDirection { Right, Left }
 
@@ -19,31 +20,53 @@ public class Skeleton : MonoBehaviour
         get { return _walkDirection; }
         set
         {
-            if(_walkDirection != value)
+            if (_walkDirection != value)
             {
                 // flipped
                 gameObject.transform.localScale = new Vector2(gameObject.transform.localScale.x * -1, gameObject.transform.localScale.y);
 
-                if(value == WalkableDirection.Right)
+                if (value == WalkableDirection.Right)
                 {
                     walkDirectionVector = Vector2.right;
-                }else if (value == WalkableDirection.Left)
+                }
+                else if (value == WalkableDirection.Left)
                 {
                     walkDirectionVector = Vector2.left;
                 }
             }
+            _walkDirection = value;
         }
     }
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        //touchingDirections = GetComponent<TouchingDirections>();
+        touchingDirections = GetComponent<TouchingDirection>();
+        WalkDirection = WalkableDirection.Left;
     }
 
     private void FixedUpdate()
     {
-        rb.linearVelocity = new Vector2(walkSpeed * Vector2.right.x, rb.linearVelocity.y);
+        if (touchingDirections.IsGrounded && touchingDirections.IsOnWall)
+        {
+            FlipDirection();
+        }
+        rb.linearVelocity = new Vector2(walkSpeed * walkDirectionVector.x, rb.linearVelocity.y);
+    }
+
+    private void FlipDirection()
+    {
+        if (WalkDirection == WalkableDirection.Right)
+        {
+            WalkDirection = WalkableDirection.Left;
+        }else if (WalkDirection == WalkableDirection.Left)
+        {
+            WalkDirection = WalkableDirection.Right;
+        }
+        else
+        {
+            Debug.LogError("Current walkable direction is not set to left or right");
+        }
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -55,6 +78,6 @@ public class Skeleton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
