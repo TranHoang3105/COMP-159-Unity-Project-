@@ -97,35 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: adventurer-idle-00_0
-      rect:
-        serializedVersion: 2
-        x: 59
-        y: 47
-        width: 47
-        height: 53
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 700758a969d1d2690800000000000000
-      internalID: -7625406061393645561
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Attack_0
       rect:
         serializedVersion: 2
-        x: 214
-        y: 47
-        width: 39
-        height: 55
+        x: 0
+        y: 0
+        width: 150
+        height: 150
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -144,10 +122,10 @@ TextureImporter:
       name: Attack_1
       rect:
         serializedVersion: 2
-        x: 351
-        y: 48
-        width: 38
-        height: 58
+        x: 150
+        y: 0
+        width: 150
+        height: 150
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,10 +144,10 @@ TextureImporter:
       name: Attack_2
       rect:
         serializedVersion: 2
-        x: 502
-        y: 49
-        width: 37
-        height: 58
+        x: 300
+        y: 0
+        width: 150
+        height: 150
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -188,10 +166,10 @@ TextureImporter:
       name: Attack_3
       rect:
         serializedVersion: 2
-        x: 651
-        y: 48
-        width: 38
-        height: 59
+        x: 450
+        y: 0
+        width: 150
+        height: 150
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -210,10 +188,10 @@ TextureImporter:
       name: Attack_4
       rect:
         serializedVersion: 2
-        x: 808
-        y: 49
-        width: 31
-        height: 58
+        x: 600
+        y: 0
+        width: 150
+        height: 150
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -232,10 +210,10 @@ TextureImporter:
       name: Attack_5
       rect:
         serializedVersion: 2
-        x: 968
-        y: 48
-        width: 80
-        height: 54
+        x: 750
+        y: 0
+        width: 150
+        height: 150
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -254,10 +232,10 @@ TextureImporter:
       name: Attack_6
       rect:
         serializedVersion: 2
-        x: 1118
-        y: 48
-        width: 80
-        height: 54
+        x: 900
+        y: 0
+        width: 150
+        height: 150
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -268,6 +246,28 @@ TextureImporter:
       bones: []
       spriteID: 6aa5dc8a9ea7f134c8e556ace57bcfb3
       internalID: 2032980533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack_7
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 0
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59e24fd9a217f674297909e640270c3d
+      internalID: 1470299533
       vertices: []
       indices: 
       edges: []
@@ -286,7 +286,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":128.0,"y":128.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":8.0,"y":1.0},"gridSpriteSize":{"x":150.0,"y":150.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       Attack_0: -145396437
       Attack_1: -1169383691
@@ -295,7 +295,7 @@ TextureImporter:
       Attack_4: 367698836
       Attack_5: 193007464
       Attack_6: 2032980533
-      adventurer-idle-00_0: -7625406061393645561
+      Attack_7: 1470299533
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

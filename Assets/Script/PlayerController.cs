@@ -9,6 +9,14 @@ public class PlayerController : MonoBehaviour
             return animator.GetBool(AnimationString.canMove);
         }
     }
+
+    public bool IsAlive
+    {
+        get
+        {
+            return animator.GetBool(AnimationString.isAlive);
+        }
+    }
     public float moveSpeed = 4f; // Move Speed
     public float runSpeed = 7f;  // Run Speed
 
@@ -140,8 +148,17 @@ public class PlayerController : MonoBehaviour
     {
         moveInput = context.ReadValue<Vector2>();
         // Check whether the char is moving or not
-        IsMoving = moveInput != Vector2.zero;
-        setFacingDirection(moveInput);
+
+        if (IsAlive)
+        {
+            IsMoving = moveInput != Vector2.zero;
+            setFacingDirection(moveInput);
+        }
+        else
+        {
+            IsMoving = false;
+        }
+        
     }
 
 
