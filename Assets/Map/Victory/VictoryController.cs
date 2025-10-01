@@ -6,7 +6,7 @@ public class VictoryController : MonoBehaviour
 
     public void OnMenuClick()
 {
-    SceneManager.LoadScene("Main Menu"); 
+    SceneManager.LoadScene("NewMenu"); 
 }
 
 }
