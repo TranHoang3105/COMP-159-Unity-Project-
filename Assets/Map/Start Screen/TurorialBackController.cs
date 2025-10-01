@@ -6,7 +6,7 @@ public class TurorialBackController : MonoBehaviour
 
 public void OnBackClick()
 {
-    SceneManager.LoadScene("Main Menu"); 
+    SceneManager.LoadScene("NewMenu"); 
 }
 
 }

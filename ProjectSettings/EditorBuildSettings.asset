@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Map/Victory/VictoryScreen.unity
     guid: 9aecf5abb0099e445b9fde5f390020ca
+  - enabled: 1
+    path: Assets/Map/Start Screen/NewMenu.unity
+    guid: ec25976155b2e084da20df0473ae0b3a
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
