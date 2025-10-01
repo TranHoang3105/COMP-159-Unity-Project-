@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections;
 using System;
 
-[RequireComponent(typeof(Rigidbody2D), typeof(TouchingDirection))] 
+[RequireComponent(typeof(Rigidbody2D), typeof(TouchingDirection), typeof(Damageable))]
 
 public class Skeleton : MonoBehaviour
 {
@@ -14,6 +14,7 @@ public class Skeleton : MonoBehaviour
     Rigidbody2D rb;
     TouchingDirection touchingDirections;
     Animator animator;
+    Damageable damageable;
 
     public enum WalkableDirection { Right, Left }
 
@@ -67,10 +68,11 @@ public class Skeleton : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         touchingDirections = GetComponent<TouchingDirection>();
         animator = GetComponent<Animator>();
+        damageable = GetComponent<Damageable>();
 
         WalkDirection = WalkableDirection.Left;
     }
-    
+
     // Update is called once per frame
     void Update()
     {
@@ -84,15 +86,19 @@ public class Skeleton : MonoBehaviour
             FlipDirection();
         }
 
-        if (CanMove)
+        if (!damageable.LockVelocity)
         {
-            rb.linearVelocity = new Vector2(walkSpeed * walkDirectionVector.x, rb.linearVelocity.y);
+            if (CanMove)
+            {
+                rb.linearVelocity = new Vector2(walkSpeed * walkDirectionVector.x, rb.linearVelocity.y);
+            }
+            else
+            {
+                rb.linearVelocity = new Vector2(Mathf.Lerp(rb.linearVelocity.x, 0, walkStopRate), rb.linearVelocity.y);
+            }
         }
-        else
-        {
-            rb.linearVelocity = new Vector2(Mathf.Lerp(rb.linearVelocity.x, 0, walkStopRate), rb.linearVelocity.y);
-        }
-        
+
+
     }
 
     private void FlipDirection()
@@ -109,6 +115,11 @@ public class Skeleton : MonoBehaviour
         {
             Debug.LogError("Current walkable direction is not set to right or left.");
         }
+    }
+
+    public void OnHit(int damage, Vector2 knockback)
+    {
+        rb.linearVelocity = new Vector2(knockback.x, rb.linearVelocity.y + knockback.y);
     }
 
 

@@ -4,7 +4,9 @@ public class PlayerController : MonoBehaviour
 {
     Rigidbody2D rb;
     Animator animator;
-    public bool canMove{get
+    public bool canMove
+    {
+        get
         {
             return animator.GetBool(AnimationString.canMove);
         }
@@ -30,7 +32,20 @@ public class PlayerController : MonoBehaviour
 
     //Reference to TouchingDirection script
     TouchingDirection touchingDir;
+    Damageable damageable;
     public bool _isFacingRight = true;
+    private bool LockVelocity
+    {
+        get
+        {
+            return animator.GetBool(AnimationString.lockVelocity);
+        }
+        set
+        {
+            animator.SetBool(AnimationString.lockVelocity, value);
+        }
+    }
+
     public bool isFacingRight
     {
         get
@@ -55,21 +70,21 @@ public class PlayerController : MonoBehaviour
             if (canMove)
             {
                 if (touchingDir.IsGrounded)
-            {
-                if (IsMoving)
                 {
-                    return IsRunning ? runSpeed : moveSpeed;
+                    if (IsMoving)
+                    {
+                        return IsRunning ? runSpeed : moveSpeed;
+                    }
+                    else
+                    {
+                        return 0; // idle on ground
+                    }
                 }
                 else
                 {
-                    return 0; // idle on ground
+                    // In the air, limited control
+                    return airWalkSpeed;
                 }
-            }
-            else
-            {
-                // In the air, limited control
-                return airWalkSpeed;
-            }
             }
             else
             {
@@ -138,8 +153,10 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.linearVelocity = new Vector2(moveInput.x * currentSpeed, rb.linearVelocity.y);
+        if (!LockVelocity)
+            rb.linearVelocity = new Vector2(moveInput.x * currentSpeed, rb.linearVelocity.y);
         animator.SetFloat(AnimationString.yVelocity, rb.linearVelocity.y);
+        
     }
 
 
@@ -158,7 +175,7 @@ public class PlayerController : MonoBehaviour
         {
             IsMoving = false;
         }
-        
+
     }
 
 
@@ -209,7 +226,13 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetTrigger(AnimationString.attack);
         }
-       
+
+    }
+
+    public void OnHit(int damage, Vector2 knockback)
+    {
+        LockVelocity = true;
+        rb.linearVelocity = new Vector2(knockback.x, rb.linearVelocity.y + knockback.y);
     }
 }
 

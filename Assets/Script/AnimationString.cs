@@ -14,4 +14,6 @@ internal static class AnimationString
     internal static string canMove = "canMove";
     internal static string hasTarget = "hasTarget";
     internal static string isAlive = "isAlive";
+    internal static string hit = "hit";
+    internal static string lockVelocity = "lockVelocity";
 }

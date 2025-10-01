@@ -1,7 +1,9 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Damageable : MonoBehaviour
 {
+    public UnityEvent<int, Vector2> damagableHit;
     Animator animator;
 
     [SerializeField]
@@ -44,6 +46,9 @@ public class Damageable : MonoBehaviour
 
     [SerializeField]
     private bool isInvincible = false;
+
+
+
     private float timeSinceHit = 0;
     public float invincibilityTime = 0.25f;
 
@@ -57,6 +62,18 @@ public class Damageable : MonoBehaviour
         {
             _isAlive = value;
             animator.SetBool(AnimationString.isAlive, value);
+        }
+    }
+
+    public bool LockVelocity
+    {
+        get
+        {
+            return animator.GetBool(AnimationString.lockVelocity);
+        }
+        set
+        {
+            animator.SetBool(AnimationString.lockVelocity, value);
         }
     }
 
@@ -80,13 +97,21 @@ public class Damageable : MonoBehaviour
 
     }
 
-    public void Hit(int damage)
+    public bool Hit(int damage, Vector2 knockback)
     {
         if (IsAlive && !isInvincible)
         {
             Health -= damage;
             isInvincible = true;
+
+            animator.SetTrigger(AnimationString.hit);
+            LockVelocity = true;
+            damagableHit?.Invoke(damage, knockback);
+
+            return true;
+
         }
+        return false;
     }
 
 }
