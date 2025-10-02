@@ -26,10 +26,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SetBoolBehavior
   boolName: canMove
-  valueOnEnter: 0
+  valueOnEnter: 1
   valueOnExit: 1
-  updateOnStateMachine: 0
-  updateOnState: 1
+  updateOnStateMachine: 1
+  updateOnState: 0
 --- !u!1102 &-6789787607154078600
 AnimatorState:
   serializedVersion: 6
@@ -164,7 +164,7 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0
   m_TransitionOffset: 0
   m_ExitTime: 0.75
   m_HasExitTime: 0
@@ -254,8 +254,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SetBoolBehavior
   boolName: canMove
-  valueOnEnter: 1
-  valueOnExit: 0
+  valueOnEnter: 0
+  valueOnExit: 1
   updateOnStateMachine: 1
   updateOnState: 0
 --- !u!91 &9100000
