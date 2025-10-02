@@ -70,7 +70,7 @@ public class Skeleton : MonoBehaviour
         animator = GetComponent<Animator>();
         damageable = GetComponent<Damageable>();
 
-        WalkDirection = WalkableDirection.Left;
+        WalkDirection = WalkableDirection.Right;
     }
 
     // Update is called once per frame
