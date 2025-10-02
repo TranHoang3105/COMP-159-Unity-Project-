@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement; // <-- needed for scene loading
 
 public class Damageable : MonoBehaviour
 {
@@ -11,14 +12,8 @@ public class Damageable : MonoBehaviour
 
     public int MaxHealth
     {
-        get
-        {
-            return _maxHealth;
-        }
-        set
-        {
-            _maxHealth = value;
-        }
+        get { return _maxHealth; }
+        set { _maxHealth = value; }
     }
 
     [SerializeField]
@@ -26,17 +21,16 @@ public class Damageable : MonoBehaviour
 
     public int Health
     {
-        get
-        {
-            return _health;
-        }
+        get { return _health; }
         set
         {
             _health = value;
 
-            if (_health <= 0)
+            if (_health <= 0 && IsAlive) // only trigger once
             {
+                _health = 0;
                 IsAlive = false;
+                OnDeath(); // <- call the new method
             }
         }
     }
@@ -47,17 +41,12 @@ public class Damageable : MonoBehaviour
     [SerializeField]
     private bool isInvincible = false;
 
-
-
     private float timeSinceHit = 0;
     public float invincibilityTime = 0.25f;
 
     public bool IsAlive
     {
-        get
-        {
-            return _isAlive;
-        }
+        get { return _isAlive; }
         set
         {
             _isAlive = value;
@@ -67,14 +56,8 @@ public class Damageable : MonoBehaviour
 
     public bool LockVelocity
     {
-        get
-        {
-            return animator.GetBool(AnimationString.lockVelocity);
-        }
-        set
-        {
-            animator.SetBool(AnimationString.lockVelocity, value);
-        }
+        get { return animator.GetBool(AnimationString.lockVelocity); }
+        set { animator.SetBool(AnimationString.lockVelocity, value); }
     }
 
     private void Awake()
@@ -94,7 +77,6 @@ public class Damageable : MonoBehaviour
 
             timeSinceHit += Time.deltaTime;
         }
-
     }
 
     public bool Hit(int damage, Vector2 knockback)
@@ -109,9 +91,25 @@ public class Damageable : MonoBehaviour
             damagableHit?.Invoke(damage, knockback);
 
             return true;
-
         }
         return false;
     }
 
+    // 🔴 This is the new method
+    private void OnDeath()
+    {
+        if (CompareTag("Player"))
+        {
+            SceneManager.LoadScene("GameOver");
+        }
+        else if (CompareTag("Boss"))
+        {
+            SceneManager.LoadScene("VictoryScreen");
+        }
+        else if (CompareTag("Enemy"))
+        {
+            // Optional: let death animation play before destroy
+            Destroy(gameObject, 1.5f);
+        }
+    }
 }
