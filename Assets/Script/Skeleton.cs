@@ -10,7 +10,7 @@ public class Skeleton : MonoBehaviour
     public float walkSpeed = 3f;
     public float walkStopRate = 0.07f;
     public DetectionZone attackZone;
-
+    private bool hasFlipped = false;
     Rigidbody2D rb;
     TouchingDirection touchingDirections;
     Animator animator;
@@ -83,7 +83,15 @@ public class Skeleton : MonoBehaviour
     {
         if (touchingDirections.isOnWall && touchingDirections.IsGrounded)
         {
-            FlipDirection();
+            if (!hasFlipped)
+            {
+                FlipDirection();
+                hasFlipped = true;
+            }
+        }
+        else
+        {
+            hasFlipped = false;
         }
 
         if (!damageable.LockVelocity)
