@@ -27,7 +27,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SetBoolBehavior
   boolName: canMove
   valueOnEnter: 1
-  valueOnExit: 1
+  valueOnExit: 0
   updateOnStateMachine: 1
   updateOnState: 0
 --- !u!1102 &-6789787607154078600
@@ -210,8 +210,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SetBoolBehavior
   boolName: canMove
-  valueOnEnter: 1
-  valueOnExit: 0
+  valueOnEnter: 0
+  valueOnExit: 1
   updateOnStateMachine: 0
   updateOnState: 1
 --- !u!1102 &-1664853942134816663
