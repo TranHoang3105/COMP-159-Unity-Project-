@@ -95,7 +95,7 @@ public class Damageable : MonoBehaviour
         return false;
     }
 
-    // 🔴 This is the new method
+   
     private void OnDeath()
     {
         if (CompareTag("Player"))
@@ -105,11 +105,6 @@ public class Damageable : MonoBehaviour
         else if (CompareTag("Boss"))
         {
             SceneManager.LoadScene("VictoryScreen");
-        }
-        else if (CompareTag("Enemy"))
-        {
-            // Optional: let death animation play before destroy
-            Destroy(gameObject, 1.5f);
         }
     }
 }
